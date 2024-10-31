@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 0000
+      MYSQL_DATABASE: test1
+    ports:
+      - 3322:3306
+  server:
+    image: hyuuuuk/my-server
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc://mysql://mysql:3306/test1
+    ports:
+      - 8080:8080
